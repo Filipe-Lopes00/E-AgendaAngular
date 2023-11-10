@@ -1,0 +1,81 @@
+<div class="container">
+
+  <div class="row align-items-center gy-3 pt-5 mb-5">
+    <div class="col-12">
+      <h1 class="fs-2 text-primary mb-2">Excluir Contato</h1>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-12 col-md-10 col-lg-6 mx-auto my-5">
+      <div class="text-md-start">
+
+        <h2 class="fs-5">
+          Tem certeza que deseja excluir o contato
+          <span class="fw-medium fst-italic text-primary">{{contato?.nome}}</span> ?
+        </h2>
+      </div>
+
+      <dl class="form-group mt-4 row ">
+        <dt class="col-md-4">
+          <label class="fw-medium text-primary fs-5 lh-lg">Nome:</label>
+        </dt>
+        <dd class="col-md-8 d-flex align-items-end ">
+          <span class=" fs-5">{{contato?.nome}}</span>
+        </dd>
+
+        <dt class="col-md-4 ">
+          <label class=" fw-medium text-primary fs-5 lh-lg">Email:</label>
+        </dt>
+        <dd class="col-md-8 d-flex align-items-end ">
+          <span class=" fs-5">{{contato?.email}}</span>
+        </dd>
+
+        <dt class="col-md-4">
+          <label class="fw-medium text-primary fs-5 lh-lg">Telefone:</label>
+        </dt>
+        <dd class="col-md-8 d-flex align-items-end ">
+          <span class=" fs-5">{{contato?.telefone}}</span>
+        </dd>
+
+        <dt class="col-md-4">
+          <label class="fw-medium text-primary fs-5 lh-lg">Cargo:</label>
+        </dt>
+        <dd class="col-md-8 d-flex align-items-end ">
+          <span class=" fs-5">{{contato?.cargo}}</span>
+        </dd>
+
+        <dt class="col-md-4">
+          <label class="fw-medium text-primary fs-5 lh-lg">Empresa:</label>
+        </dt>
+        <dd class="col-md-8 d-flex align-items-end ">
+          <span class=" fs-5">{{contato?.empresa}}</span>
+        </dd>
+      </dl>
+
+      <div class="card-footer g-grid d-flex gap-1 mt-5">
+        <button mat-raised-button color="primary" (click)="excluirContato()" type="button" class=" px-5">
+          <mat-icon>delete</mat-icon>
+          Excluir
+        </button>
+        <button mat-stroked-button color="primary" routerLink="/contatos/listar" type="button" class=" px-5">
+          <mat-icon>arrow_back</mat-icon>
+          Voltar
+        </button>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-12">
+
+      <div class="row mt-5">
+        <div class="col">
+          <img class="img-fluid" [src]="(tema$ | async) === 'light-theme' ?
+                '../../../../assets/delete-light.svg' :
+                '../../../../assets/delete-dark.svg'">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

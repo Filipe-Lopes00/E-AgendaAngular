@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="row align-items-center gy-3 pt-5 mb-5">
+    <div class="col-12">
+      <h1 class="fs-2 text-primary mb-2">Listar Contatos</h1>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <a mat-raised-button color="accent" [routerLink]="['/contatos/inserir']" role="button">
+    <span class="material-icons pt-1 px-1">person</span>
+    <span class="mx-2"> Novo Contato</span>
+  </a>
+
+  <mat-tab-group (focusChange)="filtrar($event)" animationDuration="2ms">
+    <mat-tab label="Todos">
+      <div *ngTemplateOutlet="contatosTemplate"></div>
+    </mat-tab>
+    <mat-tab label="Favoritos">
+      <div *ngTemplateOutlet="contatosTemplate"></div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<ng-template #contatosTemplate>
+  <div class="container mt-1">
+    <div class="row d-flex">
+
+      <div *ngFor="let contato of contatos" class="col-sm-12 col-lg-6 mb-2">
+        <app-contatos-card [contato]="contato" (onFavoritarContato)="alterarFavorito($event)"
+          (onExcluirContato)="excluir($event)" (onEditarContato)="editar($event)"
+          (onDetalhesContato)="detalhes($event)">
+        </app-contatos-card>
+
+      </div>
+    </div>
+  </div>
+</ng-template>

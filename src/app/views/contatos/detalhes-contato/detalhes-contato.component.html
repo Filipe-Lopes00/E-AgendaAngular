@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <!-- Conteúdo principal -->
+    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5">
+      <!-- Titulo -->
+      <div class="text-md-start">
+        <div class="text-md-start">
+          <h1 class="fw-medium fs-3 text-primary">Detalhes Contato</h1>
+          <hr />
+        </div>
+
+        <h2 class="fs-5">
+          Exibindo detalhes de:
+          <span class="fw-bolder fst-italic">{{contato?.nome}} </span>
+        </h2>
+      </div>
+
+      <dl class="form-group mt-4 row">
+
+        <dt class="col-md-4">
+          <label class=" fw-medium fs-6">Email:</label>
+        </dt>
+        <dd class=" col-md-8 fs-6 fw-medium">
+          {{contato?.email}}
+        </dd>
+
+        <dt class="col-md-4">
+          <label class=" fw-medium fs-6">Telefone:</label>
+        </dt>
+        <dd class=" col-md-8 fs-6 fw-medium">
+          {{contato?.telefone}}
+        </dd>
+
+        <dt class="col-md-4">
+          <label class=" fw-medium fs-6">Cargo:</label>
+        </dt>
+        <dd class=" col-md-8 fs-6 fw-medium">
+          {{contato?.cargo}}
+        </dd>
+
+        <dt class="col-md-4">
+          <label class=" fw-medium fs-6">Empresa:</label>
+        </dt>
+        <dd class=" col-md-8 fs-6 fw-medium">
+          {{contato?.empresa}}
+        </dd>
+        <!-- compromissos -->
+        <div *ngIf='contato?.compromissos!.length != 0 '>
+          <hr>
+
+          <span class="text-primary fs-3 mb-3"> Compromissos</span>
+          <div class="form-group mt-2 row" *ngFor="let compromisso of contato?.compromissos index as i">
+
+            <dt class="col-md-4">
+              <label class=" fw-medium fs-6">Assunto:</label>
+            </dt>
+            <dd class=" col-md-8 fs-6 fw-medium">
+              {{compromisso?.assunto}}
+            </dd>
+
+            <dt class="col-md-4">
+              <label class=" fw-medium fs-6">Data:</label>
+            </dt>
+            <dd class=" col-md-8 fs-6 fw-medium">
+              {{compromisso?.data|date:'dd/MM/yyyy'}}
+            </dd>
+
+            <dt class="col-md-4">
+              <label class=" fw-medium fs-6">Hora Inicio:</label>
+            </dt>
+            <dd class=" col-md-8 fs-6 fw-medium">
+              {{compromisso?.horaInicio}}
+            </dd>
+
+            <dt class="col-md-4">
+              <label class=" fw-medium fs-6">Hora Término:</label>
+            </dt>
+            <dd class=" col-md-8 fs-6 fw-medium">
+              {{compromisso?.horaTermino}}
+            </dd>
+            <hr>
+          </div>
+
+        </div>
+      </dl>
+
+      <div class="card-footer g-grid d-flex gap-1 mt-5">
+        <a color="primary"mat-stroked-button routerLink="/contatos/listar" type="button" class="px-5">
+          <mat-icon>arrow_back"></mat-icon>
+          Voltar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

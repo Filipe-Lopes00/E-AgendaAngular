@@ -1,0 +1,8 @@
+<app-tool-bar *ngIf="(usuarioLogado$ | async); else auth " (onToggleTheme)="toggleTheme()">
+  <router-outlet></router-outlet>
+</app-tool-bar>
+
+
+<ng-template #auth>
+  <router-outlet></router-outlet>
+</ng-template>

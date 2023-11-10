@@ -1,0 +1,84 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav [hidden]="!(isHandset$ | async)" #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item>
+        <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+          routerLink="/contatos/listar">Contatos</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+          routerLink="/compromissos/listar">Compromissos</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+          routerLink="/categorias/listar">Categorias</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+          routerLink="/despesas/listar">Despesas</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+          routerLink="/tarefas/listar">Tarefas</a>
+      </mat-list-item>
+      <div class="toolbar-right-buttons">
+        <mat-list-item>
+          <button mat-stroked-button color="basic" (click)="sair()">Sair</button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-stroked-button color="basic" (click)="toggleTheme()">Tema</button>
+        </mat-list-item>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+        <a mat-button routerLink="/dashboard" class="pr-3 fs-4">e-Agenda</a><span class="material-icons pt-1 pl-4 mr-4">
+          bookmark
+        </span>
+
+        <mat-toolbar *ngIf="!(isHandset$ | async)">
+          <div class="spacer"></div>
+          <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+            routerLink="/contatos/listar">Contatos</a>
+
+          <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+            routerLink="/compromissos/listar">Compromissos</a>
+
+          <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+            routerLink="/categorias/listar">Categorias</a>
+
+          <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+            routerLink="/despesas/listar">Despesas</a>
+
+          <a class='link-offset-2 link-underline link-underline-opacity-0 fs-5' mat-button color="basic"
+            routerLink="/tarefas/listar">Tarefas</a>
+
+          <div class="spacer"></div>
+
+          <button mat-stroked-button color="basic" (click)="toggleTheme()"><span class="material-icons pt-1 pl-4 mr-4">
+            format_color_fill
+          </span></button>
+
+          <button class="mx-3" mat-stroked-button color="basic" (click)="sair()">Sair</button>
+
+        </mat-toolbar>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<mat-spinner *ngIf="(mostrarCarregamento$|async)" class="carregamento"
+  style="position: fixed; top: 15%; left: 80%;  margin: auto; z-index: 1000;"></mat-spinner>

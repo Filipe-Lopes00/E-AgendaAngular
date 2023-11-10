@@ -1,0 +1,43 @@
+@use '@angular/material' as mat;
+
+@import "bootstrap/scss/bootstrap";
+
+@include mat.core();
+
+$dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$pink-palette),
+        accent: mat.define-palette(mat.$blue-grey-palette),
+        density: -2),
+    ));
+
+
+.dark-theme {
+  @include mat.all-component-themes($dark-theme);
+
+  .text-primary {
+    color: $pink-500 !important;
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  }
+
+  .text-secondary {
+    color: $pink-100 !important;
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  }
+
+
+}
+
+.text-primary {
+  color:$purple !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

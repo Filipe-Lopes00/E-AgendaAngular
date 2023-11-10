@@ -1,0 +1,33 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.spacer {
+  flex: 2 1 auto;
+}
+
+
+
+//spinner no centro mode 'handset'
+@media screen and (max-width: 800px) {
+  .carregamento {
+
+      top: 50% !important;
+      left: 40% !important;
+
+  }
+}

@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mt-5">
+
+      <div class="row align-items-center gy-3 pt-5 mb-5">
+        <div>
+          <h1 class="fs-2 text-primary mb-2">Painel do Usuário</h1>
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+
+      <div class="row align-items-center ">
+        <h2 class="fs-3 text-secondary mb-2">Seja Bem-Vindo(a)
+          <span>{{ (usuarioLogado$ | async)?.usuario?.nome | uppercase }}</span>
+        </h2>
+
+        <section id="info" class="fs-5 ">
+          <p class="mt-4 mb-3 lh-base text-secondary pb-4 col-11">
+            O <span class="text-primary fw-normal">e-Agenda</span> busca
+            agilizar o gerenciamento da rotina diária ao facilitar o acesso e
+            controle de suas tarefas, contatos, compromissos e despesas.
+          </p>
+          <mat-divider></mat-divider>
+          <p class="text-primary fw-normal fs-4 pt-3 pb-4">O que você deseja gerenciar?</p>
+        </section>
+
+        <section id="buttons" class="d-grid d-md-flex gap-2 pt-3">
+          <a mat-fab extended color="primary" [routerLink]="['/contatos/listar']">
+            <mat-icon>bookmark</mat-icon> Contatos
+          </a>
+
+          <a mat-fab extended color="primary" [routerLink]="['/compromissos/listar']">
+            <mat-icon>bookmark</mat-icon> Compromissos
+          </a>
+
+          <a mat-fab extended color="primary" [routerLink]="['/categorias/listar']">
+            <mat-icon>bookmark</mat-icon> Categorias
+          </a>
+
+          <a mat-fab extended color="primary" [routerLink]="['/despesas/listar']">
+            <mat-icon>bookmark</mat-icon> Despesas
+          </a>
+
+          <a mat-fab extended color="primary" [routerLink]="['/tarefas/listar']">
+            <mat-icon>bookmark</mat-icon> Tarefas
+          </a>
+        </section>
+
+      </div>
+    </div>
+    <div class="col-md-6 mt-1">
+      <div class="row mt-5">
+        <div class="col">
+          <img class="img-fluid" [src]="(alterarTema$ | async) === 'light-theme' ?
+          '../../../../assets/dashboard-light.svg' :
+          '../../../../assets/dashboard-dark.svg'">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

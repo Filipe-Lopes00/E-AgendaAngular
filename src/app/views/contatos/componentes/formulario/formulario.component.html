@@ -1,0 +1,41 @@
+  <section>
+    <form [formGroup]="form" class="form mx-auto">
+      <mat-form-field class='full-width'>
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" autocomplete="no">
+        <mat-error *ngIf="form?.value.nome.invalid">{{form.validate('nome')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class='full-width'>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="email@example.com" formControlName="email" autocomplete="no">
+        <mat-error *ngIf="form.campoValido('email')">{{this.form.validate('email')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class='full-width'>
+        <mat-label>Telefone</mat-label>
+        <input matInput formControlName="telefone" placeholder="ex: 49 32222-2222" autocomplete="no">
+        <mat-error *ngIf="form.campoValido('telefone')">{{form.validate('telefone')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class='full-width'>
+        <mat-label>Empresa</mat-label>
+        <input matInput formControlName="empresa" autocomplete="no">
+        <mat-error  *ngIf="form.campoValido('empresa')">{{form.validate('empresa')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class='full-width'>
+        <mat-label>Cargo</mat-label>
+        <input matInput formControlName="cargo" autocomplete="no">
+        <mat-error  *ngIf="form.campoValido('cargo')">{{form.validate('cargo')}}</mat-error>
+      </mat-form-field>
+
+      <div class="d-flex  gap-2">
+        <button [disabled]="!form.valid" color='primary' mat-raised-button type="submit" (click)="onSubmit()">Salvar</button>
+
+        <a color='primary' mat-stroked-button type="button" routerLink="/contatos/listar">Voltar</a>
+      </div>
+
+
+    </form>
+  </section>

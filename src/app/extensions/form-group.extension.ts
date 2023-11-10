@@ -1,0 +1,54 @@
+import { FormGroup } from "@angular/forms";
+
+declare module '@angular/forms' {
+  interface FormGroup {
+    validate(item: string): string;
+    campoValido(campo: string): boolean | undefined;
+  }
+}
+
+FormGroup.prototype.validate = function (item: string): string {
+
+  const control = this.get(item)!
+
+  let msg!: string
+
+  if (control.errors!['dataInvalida'])
+    msg = '* A data deve ser superior a data de hoje';
+
+  else if (control.errors!['email'])
+    msg = '* E-mail informado em formato inválido'
+
+  else if (control.errors!['categoriaDespesaNaoSelecionada'])
+    msg = '* É necessário selecionar ao menos uma categoria'
+
+  else if (control.errors!['senhasDiferentes'])
+    msg = '* As senhas digitadas são diferentes'
+
+  else if (control.errors!['senhaMinLength'])
+    msg = `*A senha precisa ter no mínimo '6' caracteres`
+
+  else if (control.errors!['caracterEspecial'])
+    msg = `*A senha precisa ter no mínimo '1' caracter não alfa-numérico`
+
+  else if (control.errors!['letraCaixaAlta'])
+    msg = `*A senha precisa ter no mínimo '1' letra 'Maiúscula'`
+
+  else if (control.errors!['letraCaixaBaixa'])
+    msg = `*A senha precisa ter no mínimo '1' letra 'Minúscula'`
+
+  else if (control.errors!['horaInvalida'])
+    msg = `*A hora de término precisa ser maior que a inicial`
+
+  else
+    msg = `* O campo '${item}' é obrigatório`
+
+  return msg;
+}
+
+
+
+FormGroup.prototype.campoValido = function (campo: string): boolean | undefined {
+  return (this.get(campo)?.hasError('required') && !this.get(campo)?.pristine)
+    || (this.get(campo)?.hasError('email') && !this.get(campo)?.pristine)
+}
